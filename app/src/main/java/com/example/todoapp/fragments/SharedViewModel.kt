@@ -35,7 +35,8 @@ class SharedViewModel(application: Application): AndroidViewModel(application) {
             when(position){
                 0 -> { (parent?.getChildAt(0) as TextView).setTextColor(ContextCompat.getColor(application, R.color.red)) }
                 1 -> { (parent?.getChildAt(0) as TextView).setTextColor(ContextCompat.getColor(application, R.color.yellow)) }
-                2 -> { (parent?.getChildAt(0) as TextView).setTextColor(ContextCompat.getColor(application, R.color.green)) }
+                2 -> { (parent?.getChildAt(0) as TextView).setTextColor(ContextCompat.getColor(application, R.color.blue)) }
+                3 -> { (parent?.getChildAt(0) as TextView).setTextColor(ContextCompat.getColor(application, R.color.green)) }
             }
         }
     }
@@ -46,9 +47,10 @@ class SharedViewModel(application: Application): AndroidViewModel(application) {
 
     fun parsePriority(priority: String): Priority {
         return when(priority){
-            "High Priority" -> { Priority.HIGH }
-            "Medium Priority" -> { Priority.MEDIUM }
-            "Low Priority" -> { Priority.LOW }
+            "紧急重要" -> { Priority.HIGH }
+            "不紧急重要" -> { Priority.MEDIUM }
+            "紧急不重要" -> { Priority.LESSTHANMEDIUM }
+            "不紧急不重要" -> { Priority.LOW }
             else -> Priority.LOW
         }
     }

@@ -75,11 +75,11 @@ class UpdateFragment : Fragment() {
                 description
             )
             mToDoViewModel.updateData(updatedItem)
-            Toast.makeText(requireContext(), "Successfully updated!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "成功更新!", Toast.LENGTH_SHORT).show()
             // Navigate back
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         } else {
-            Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(), "请填写所有必填项!", Toast.LENGTH_SHORT)
                 .show()
         }
     }
@@ -87,18 +87,18 @@ class UpdateFragment : Fragment() {
     // Show AlertDialog to Confirm Item Removal
     private fun confirmItemRemoval() {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setPositiveButton("Yes") { _, _ ->
+        builder.setPositiveButton("确定") { _, _ ->
             mToDoViewModel.deleteItem(args.currentItem)
             Toast.makeText(
                 requireContext(),
-                "Successfully Removed: ${args.currentItem.title}",
+                "成功删除: ${args.currentItem.title}",
                 Toast.LENGTH_SHORT
             ).show()
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         }
-        builder.setNegativeButton("No") { _, _ -> }
-        builder.setTitle("Delete '${args.currentItem.title}'?")
-        builder.setMessage("Are you sure you want to remove '${args.currentItem.title}'?")
+        builder.setNegativeButton("取消") { _, _ -> }
+        builder.setTitle("是否删除 '${args.currentItem.title}'?")
+        builder.setMessage("是否确定删除 '${args.currentItem.title}'?")
         builder.create().show()
     }
 

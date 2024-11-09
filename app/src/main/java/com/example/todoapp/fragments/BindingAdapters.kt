@@ -41,7 +41,8 @@ class BindingAdapters {
             when(priority){
                 Priority.HIGH -> { view.setSelection(0) }
                 Priority.MEDIUM -> { view.setSelection(1) }
-                Priority.LOW -> { view.setSelection(2) }
+                Priority.LESSTHANMEDIUM -> { view.setSelection(2) }
+                Priority.LOW -> { view.setSelection(3) }
             }
         }
         @BindingAdapter("android:parsePriorityColor")
@@ -50,6 +51,7 @@ class BindingAdapters {
             when(priority){
                 Priority.HIGH -> { cardView.setCardBackgroundColor(cardView.context.getColor(R.color.red)) }
                 Priority.MEDIUM -> { cardView.setCardBackgroundColor(cardView.context.getColor(R.color.yellow)) }
+                Priority.LESSTHANMEDIUM -> { cardView.setCardBackgroundColor(cardView.context.getColor(R.color.blue)) }
                 Priority.LOW -> { cardView.setCardBackgroundColor(cardView.context.getColor(R.color.green)) }
             }
         }
